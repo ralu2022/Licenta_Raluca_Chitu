@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luana Nature</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<section class="vh-100" style="background-color: indianred">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Formular de înregistrare</p>
+                                <div th:if="${error}" style="color: red;">
+                                    <p th:text="${error}"></p>
+                                </div>
+                                <form th:action="@{/users/adduser}"  th:object="${user}" class="mx-1 mx-md-4" method="post">
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                                            <input type="text" th:field="*{name}" id="name" class="form-control"/>
+                                            <label  for="name" class="form-label">Numele dvs.</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                        <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                                            <input type="email" th:field="*{email}" id="email"  class="form-control"/>
+                                            <label for="email" class="form-label">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                        <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                                            <input type="text" th:field="*{username}" id="username" class="form-control"/>
+                                            <label for="username" class="form-label" >User</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center mb-4">
+                                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                        <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                                            <input type="password" th:field="*{password}" id="pass" class="form-control"/>
+                                            <label for="pass" class="form-label" >Parolă</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                        <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                                                class="btn btn-primary btn-lg">
+                                            Înregistrare
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                                <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0"
+                                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"
+                                                aria-label="Slide 2"></button>
+                                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"
+                                                aria-label="Slide 3"></button>
+                                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3"
+                                                aria-label="Slide 4"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="/pictures/fundata_0.jpg" class="d-block w-100" alt="Fundata_0">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/pictures/fundata_1.jpeg" class="d-block w-100" alt="Fundata_1">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/pictures/fundata_0.jpg" class="d-block w-100" alt="Fundata_2">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/pictures/fundata_0.jpg" class="d-block w-100" alt="Fundata_3">
+                                        </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"
+                                            data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"
+                                            data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<br>
+
+<!-- Nota subsol -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    </section>
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <div class="row mt-3">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class=""></i>Luana Nature
+                    </h6>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <p><i class="fas fa-home me-3"></i> Comuna Fundata, Brasov, RO</p>
+                    <p>
+                        <i class="fas fa-envelope me-3"></i>
+                        luananature2024@gmail.com
+                    </p>
+                    <p><i class="fas fa-phone me-3"></i> + 40 268 477 698</p>
+                    <p><i class="fas fa-mobile-alt me-3"></i> + 40 724 789 718</p>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="text-center p-4 me-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2024
+        <a class="text-reset me-3" th:href="@{/termsofservice}">Termene și condiții</a>
+        <a class="text-reset me-3" th:href="@{/politics}">Politica de confidențialitate</a>
+        <a class="text-reset" th:href="@{/imprint}">Imprint</a>
+    </div>
+</footer>
+</body>
+</html>

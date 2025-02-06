@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Luana Nature</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/.css/css.css">
+</head>
+
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+<!-- Meniu -->
+<nav class="navbar navbar-expand-sm bg-white fixed-top">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button><!-- Buton pentru meniu adaptabil -->
+        <div class="collapse navbar-collapse" id="navbarNavleft">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/mainpageuser}"><b>Acasă</b></a>
+                </li> <!-- Acasă -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/individualsuser}"><b>Individual</b></a>
+                </li> <!-- Individual -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/kidsuser}"><b>Lumea copiilor</b></a>
+                </li> <!-- Lumea copiilor -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/cateringuser}"><b>Catering</b></a>
+                </li> <!-- Catering -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/store}"><b>Magazin</b></a>
+                </li> <!-- Magazin -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/reviews/review}"><b>Recenzie nouă</b></a>
+                </li> <!-- Recenzie -->
+            </ul>
+        </div> <!-- Meniu stânga -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}"><b>Delogare</b></a>
+                </li><!-- Delogare -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/reservations/reservation}"><b>Rezervare nouă</b></a>
+                </li> <!-- Rezervare-->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/aboutususer}"><b>Despre noi</b></a>
+                </li> <!-- Despre noi -->
+                <li class="nav-item">
+                    <a class="nav-link"
+                       th:href="@{/contactMessages/addContactMessage}"><b>Contact</b></a>
+                </li> <!-- Contact -->
+            </ul>
+        </div> <!-- Meniu dreapta -->
+    </div> <!-- Meniu fără lățime fixă-->
+</nav>
+<br>
+
+<!-- Imagine sus -->
+<div class="card" style="width: 100%; position: relative;">
+    <img class="card-img-top" src="/pictures/companii_1.jpeg" alt="Centered image" style="height: 500px;
+    width: 100%;object-fit: cover;">
+    <div class="card-img-overlay"
+         style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <p style="font-size: 80px; font-family: Elephant,serif;color: antiquewhite; text-align: center;
+        margin: 0"> Echipa este familia care te suține </p><br>
+        <p style="font-size: 50px; font-family: 'Lucida Handwriting', cursive; color: antiquewhite; text-align: center;
+        margin: 0;">în proiectele tale.</p>
+    </div>
+</div><br><br>
+
+<!-- Servicii cazare -->
+<div class="container">
+    <p style="font-family: Tahoma; text-align:center; font-size: 5rem; font-family: Gabriola; color:coral"><b>
+        Servicii de cazare</b></p>
+    <div class="row justify-content-center">
+        <div class="col-md-8" style="text-align: justify-all;">
+            <h5><b>A-Frame</b></h5>
+            <p>Pentru o priveliște deosebită în timp ce savurezi cafeaua. Includ baie proprie, mini-bucătărie,
+                living-room, șemineu. </p>
+            <h5><b>Căsuțe de lemn</b></h5>
+            <p>Căsuțele au încălzire cu șemineu, saltele umplute cu paie și design rural. Totodată, oferă băi private și
+                mini-bucătărie.</p>
+            <h5><b>Cabane</b></h5>
+            <p>Cabanele oferă camere simple, duble sau triple. De asemenea, au baie proprie, șemineu și living.</p>
+            <p>Notă*: aceste tipuri de cazare sunt recomandate grupurilor, însă se poate rezerva și cel de tip
+                Gampling.</p>
+        </div>
+    </div>
+</div><br><br>
+
+<!-- Birouri si săli ședinte-->
+<div class="container">
+    <p style="font-family: Gabriola; text-align: center; font-size: 5rem; color: coral;"><b>Birouri și săli de
+        ședințe</b></p> <!-- Titlu -->
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h5><b>Individual</b></h5>
+            <p style="text-align: justify;">
+                Birourile individuale oferă un spațiu privat în mijlocul naturii, oferindu-vă liniștea de care aveți nevoie
+                pentru o concentrare maximă.
+            </p>
+            <h5><b>Echipe</b></h5>
+            <p style="text-align: justify;">
+                Echipate cu mese de birou de dimensiuni medii, aceste birouri sunt ideale pentru lucrul în echipă.
+            </p>
+            <h5><b>Conferințe</b></h5>
+            <p style="text-align: justify;">
+                E nevoie de planificare, strategii și decizii? Birourile de tip conferință sunt alegere perfectă.
+            </p>
+        </div> <!-- Text -->
+        <div class="col-md-6">
+            <div id="myCarousel" class="carousel slide small-carousel" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/pictures/birou_single.webp" class="d-block w-100 carousel-image" alt="Glamping_0">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/pictures/birou_echipa.jpg" class="d-block w-100 carousel-image" alt="Glamping_1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/pictures/birou_meeting.avif" class="d-block w-100 carousel-image" alt="Glamping_2">
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Carousel imagini -->
+    </div>
+</div>
+<br><br>
+
+<!-- Team building -->
+<div class="container">
+    <p style="font-family: Gabriola; text-align: center; font-size: 5rem; color: coral;"><b>Team building</b>
+    </p><br>
+    <p style="font-family: Gabriola; text-align: left; font-size: 2rem; color: darkcyan;"><b>
+        Perioade anuale de rezervare team building (inclus: închiriere biciclete, ture în natură și tiroliană): 15 iunie - 22 iunie; 10 iulie - 17 iulie; 5 august - 12 august. Separat,
+        se pot rezerva ture în natură.  </b>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <img class="d-block w-100" src="/pictures/biciclete_0.webp" alt="biciclete">
+        </div>
+        <div class="col-md-6">
+            <h3><b>Închiriere biciclete</b></h3><br>
+            <h5><b>Electrice</b></h5><br>
+            <p>Biciclete electrice sunt alegerea perfectă pentru când vrei să explorezi un spațiu cât mai mare în mijlocul
+            naturii.</p>
+            <h5><b>Tradiționale</b></h5>
+            <p>Simți nevoie să depui efort fizic? Atunci, alegerea perfectă este o bicicletă tradițională.</p>
+        </div>
+    </div><br><br><br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h3><b>Organizare ture în natură</b></h3><br>
+                <p style="font-family: Gabriola; text-align: left; font-size: 2rem; color: darkcyan;"><b>
+                    Perioade anuale de rezervare(inclus închiriere biciclete): 14 aprilie - 21 aprilie; 18 iulie - 25 iulie; 5 septembrie - 12 septembrie </b><br>
+                <h5><b>Descoperă păsările</b></h5><br>
+                <p>Fascinat de viețuitoarele înaripate ale pădurii sau doar vrei să știi mai multe? Te așteptăm în tură!</p>
+                <h5><b>Hai să cunoștii arborii pădurii</b></h5>
+                <p>Alegera perfectă atunci când vrei să descoperi viața și frumusețea arboriilor.</p>
+                <h5><b>Pasionat de fotografie?Hai cu noi!</b></h5>
+                <p>Stai ore întregi să prinz momentul perfect pe camera foto? Atunci e tura perfectă pentru tine!</p>
+            </div>
+            <div class="col-md-6">
+                <img class="d-block w-100" src="/pictures/drumetii_0.jpg" alt="biciclete" >
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <img class="d-block w-100" src="/pictures/tiroliana_0.jpg" alt="biciclete" >
+            </div>
+            <div class="col-md-6">
+                <br><br><br><br>
+                <h3><b>Tiroliană - ai curaj?</b></h3><br><br>
+                <p>Tiroliana este aventura perfectă pentru cei care doresc un pic de adrenalină și senzații tari.</p>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br>
+</div><br><br>
+</div>
+
+<!-- Notă de subsol -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    </section>
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <div class="row mt-3">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class=""></i>Luana Nature
+                    </h6>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Link-uri utile
+                    </h6>
+                    <p>
+                        <a th:href="@{/mainpageuser}" class="text-reset">Acasă</a>
+                    </p>
+                    <p>
+                        <a th:href="@{/individualsuser}" class="text-reset">Individual</a>
+                    </p>
+                    <p>
+                        <a th:href="@{/kidsuser}" class="text-reset">Lumea copiilor</a>
+                    </p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <p><i class="fas fa-home me-3"></i> Comuna Fundata, Brasov, RO</p>
+                    <p>
+                        <i class="fas fa-envelope me-3"></i>
+                        luananature2024@gmail.com
+                    </p>
+                    <p><i class="fas fa-phone me-3"></i> + 40 268 477 698</p>
+                    <p><i class="fas fa-mobile-alt me-3"></i> + 40 724 789 718</p>
+                    <h6 class="text-uppercase fw-bold mb-4">Rețele sociale</h6>
+                    <a href="https://www.facebook.com/profile.php?id=61569606121431" class="me-4" style="color: darkslategrey">
+                        <p><i class="fab fa-facebook-f"></i> Facebook </p>
+                    </a>
+                    <a href="https://www.instagram.com/luana20241209/" class="me-4 text-reset">
+                        <p><i class="fab fa-instagram"></i> Instagram </p>
+                    </a>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="text-center p-4 me-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2024 Luana Nature
+    </div>
+</footer>
+</body>
+</html>

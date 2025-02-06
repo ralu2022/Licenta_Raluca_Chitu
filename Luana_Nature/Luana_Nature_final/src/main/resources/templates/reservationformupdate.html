@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/.css/css.css">
+    <title>Rezervare generală</title>
+</head>
+
+<body style="background-image:url('/pictures/fundata_0.jpg');">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Meniu -->
+<nav class="navbar navbar-expand-sm bg-white fixed-top">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavleft">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/mainpageadmin}"><b>Pagină administrator</b></a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/loginadmin}"><b>Delogare</b></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br>
+
+
+
+<p style="font-size: 45px; font-family: Elephant; text-align: center;"> Luana Nature
+    <br>
+
+<div class="container"
+     style="background: darksalmon; padding:30px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);
+     max-width: 600px; width: 100%; max-height: 820px; margin-top: 20px; margin-bottom: 40px;overflow-y:auto;
+     font-family:'Lucida Console'; ">
+    <h2 style="margin-bottom: 20px; color: #343a40; text-align: center;font-family:Algerian">Rezervare numărul <span th:text="${reservationadmin.reservationId}"></span> </h2>
+    <form th:action="@{/reservations/updateReservation/{reservationId}(reservationId=${reservationadmin.reservationId})}"
+          th:object="${reservationadmin}" method="post">
+        <input type="hidden" name="_method" value="put"/>
+        <div class="form-group">
+            <label for="name">Nume*:</label>
+            <input type="text" th:field="*{name}" id="name" class="form-control" placeholder="Numele dvs." required
+                   style="border-radius: 5px;">
+        </div> <! Nume -->
+        <div class="form-group">
+            <label for="email">Email*:</label>
+            <input type="email" th:field="*{email}" id="email" class="form-control" placeholder="Adresă de e-mail"
+                   required style="border-radius: 5px;">
+        </div> <! Email -->
+        <div class="form-group">
+            <label for="phone">Număr de telefon* (+40 xxxxxxxxx):</label>
+            <input type="text" th:field="*{phone}" id="phone" pattern="\+40\s?\d{9}" class="form-control" placeholder="Număr de telefon +40"
+                   required style="border-radius: 5px;">
+        </div> <! Phone -->
+        <div class="form-group">
+            <label for="companie">Companie (dacă este cazul):</label>
+            <input type="text" th:field="*{company}" id="companie" class="form-control" placeholder="Companie"
+                   style="border-radius: 5px;">
+        </div> <! Companie-->
+        <div class="form-group">
+            <label for="datasosire">Data sosirii*:</label>
+            <input type="date" th:field="*{arrivalDate}" id="datasosire" class="form-control" placeholder="Dată sosire"
+                   required style="border-radius: 5px;">
+            <script>
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('datasosire').setAttribute('min', today);
+            </script>
+        </div> <! Data sosirii-->
+        <div class="form-group">
+            <label for="dataplecare">Data plecării*:</label>
+            <input type="date" th:field="*{departureDate}" id="dataplecare" class="form-control" placeholder="Dată plecare"
+                   required style="border-radius: 5px;">
+            <script>
+                const today = new Date().toISOString().split('T')[0];
+                document.getElementById('dataplecare').setAttribute('min', today);
+            </script>
+        </div> <! Data plecare-->
+        <div class="form-group">
+            <label for="persoane">Număr de persoane* (min.1):</label>
+            <input type="number" th:field="*{numberOfPersons}" id="persoane" class="form-control"
+                   placeholder="Introduceți numărul de persoane" required min = "1" style="border-radius: 5px;">
+        </div> <! Persoane-->
+        <div class="form-group mb-3"> <! Cazare -->
+            <label for="listacazare">Opțiune de cazare*:</label>
+            <select th:field="*{accommodationType}" id="listacazare" class="form-control" name="options"
+                    required style="border-radius: 5px;">
+                <option value="A-Frame">A-Frame</option>
+                <option value="Gampling">Gampling</option>
+                <option value="Căsuțe de lemn">Căsuțe de lemn</option>
+            </select>
+        </div> <! Cazare -->
+        <div class="form-group mb-3">
+            <label for="catering">Catering*:</label>
+            <select th:field="*{cateringType}" class="form-control" id="catering" name="options"
+                    required style="border-radius: 5px;">
+                <option value="Self-catering">Self-catering</option>
+                <option value="Mic dejun">Mic dejun</option>
+                <option value="Demipensiune">Demipensiune</option>
+                <option value="All-inclusive">All-inclusive</option>
+            </select>
+        </div> <! Catering-->
+        <div class="form-group">
+            <label for="mentiunimancare">Mențiuni speciale mâncare:</label>
+            <textarea th:field="*{cateringMentions}" class="form-control" id="mentiunimancare" rows="4"
+                      placeholder="Mențiuni speciale mâncare (vegan,intoleranțe)" style="border-radius: 5px;"></textarea>
+        </div>
+        <p>Doriți adăugarea ratei fixe de băuturi/răcoritoare (100 ron/zi) - cafea, răcoritoare, alcool</p>
+        <div class="form-check">
+            <input type="radio" th:field="*{drinkType}" id="da" class="form-check-input" value="da" name="drinkType">Da
+            <label class="form-check-label" for="da"></label>
+        </div>
+        <div class="form-check">
+            <input type="radio" th:field="*{drinkType}" id="nu" class="form-check-input" value="nu" name="drinkType">Nu
+            <label class="form-check-label" for="nu"></label>
+        </div>
+        <div class="form-check">
+            <input type="radio" th:field="*{drinkType}" id="nuStiuInca" class="form-check-input" value="nu știu încă" name="drinkType">Nu știu încă
+            <label class="form-check-label" for="nuStiuInca"></label>
+        </div>
+        <br>
+        <div class="form-group mb-3">
+            <label for="activity" style="text-decoration: underline;">Pachete de activități - companii</label>
+            <br><br>
+            <div id="activity">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" th:field="*{activity}" value="Team building companii" id="teamBuilding">
+                    <label class="form-check-label" for="teamBuilding">Team building
+                        (inclus ture în natură, tiroliană și închiriere biciclete) </label>
+                    <select th:field="*{period}" class="form-control mt-2" id="teamBuildingPeriod" name="teamBuildingPeriod" style="border-radius: 5px; display: inline-block; width: auto;">
+                        <option value="">Selectați perioada</option>
+                        <option value="ianuarie - decembrie">15 iunie - 22 iunie </option>
+                        <option value="aprilie - octombrie">10 iulie - 17 iulie </option>
+                        <option value="iunie - septembrie">5 august - 12 august </option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" th:field="*{activity}" value="Ture în natură companii" id="natureTour">
+                    <label class="form-check-label" for="natureTour">Ture în natură(inclus închiriere biciclete)</label><br>
+                    <select th:field="*{period}" class="form-control mt-2" id="Ture în natură companii" name="Ture în natură companii" style="border-radius: 5px; display: inline-block; width: auto;">
+                        <option value="">Selectați perioada</option>
+                        <option value="ianuarie - decembrie">14 aprilie - 21 aprilie</option>
+                        <option value="aprilie - octombrie">18 iulie - 25 iulie </option>
+                        <option value="iunie - septembrie">5 septembrie - 12 septembrie</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label for="activity1" style="text-decoration: underline;">Pachete de activități - individual</label>
+            <br><br>
+            <div id="activity1">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" th:field="*{activity}" value="Ture în natură" id="natura">
+                    <label class="form-check-label" for="teamBuilding">Ture în natură
+                    </label><br>
+                    <select th:field="*{period}" class="form-control mt-2" id="natura1" name="natura1" style="border-radius: 5px; display: inline-block; width: auto;">
+                        <option value="">Selectați perioada</option>
+                        <option value="ianuarie - decembrie">23 iunie - 30 iunie </option>
+                        <option value="aprilie - octombrie">05 iulie - 12 iulie </option>
+                        <option value="iunie - septembrie">13 august - 20 august </option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" th:field="*{activity}" value="Ture în natură companii" id="biciclete">
+                    <label class="form-check-label" for="natureTour">Închiriere biciclete)</label><br>
+                    <select th:field="*{period}" class="form-control mt-2" id="biciclete1" name="Ture în natură companii" style="border-radius: 5px; display: inline-block; width: auto;">
+                        <option value="">Selectați perioada</option>
+                        <option value="ianuarie - decembrie">14 aprilie - 21 aprilie</option>
+                        <option value="aprilie - octombrie">18 iulie - 25 iulie </option>
+                        <option value="iunie - septembrie">5 septembrie - 12 septembrie</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label for="activity" style="text-decoration: underline;">Pachete de activități - copii</label>
+            <br><br>
+            <div id="activity2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" th:field="*{activity}" value="Team building companii" id="after">
+                    <label class="form-check-label" for="teamBuilding">After school
+                    </label><br>
+                    <select th:field="*{period}" class="form-control mt-2" id="afterschool" name="after" style="border-radius: 5px; display: inline-block; width: auto;">
+                        <option value="">Selectați perioada</option>
+                        <option value="ianuarie - decembrie">15 aprilie - 22 aprilie </option>
+                        <option value="aprilie - octombrie">15 iunie - 22 septembrie </option>
+                        <option value="iunie - septembrie">01 decembrie - 20 decembrie </option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" th:field="*{activity}" value="Ture în natură companii" id="loc">
+                    <label class="form-check-label" for="natureTour">Loc de joacă - abonament</label><br>
+                    <select th:field="*{period}" class="form-control mt-2" id="locjoaca" name="Ture în natură companii" style="border-radius: 5px; display: inline-block; width: auto;">
+                        <option value="">Selectați perioada</option>
+                        <option value="ianuarie - decembrie">15 aprilie - 22 aprilie </option>
+                        <option value="aprilie - octombrie">15 iunie - 22 septembrie </option>
+                        <option value="iunie - septembrie">01 decembrie - 20 decembrie</option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" th:field="*{activity}" value="Ture în natură companii" id="loc3">
+                    <label class="form-check-label" for="natureTour">Ture în natură</label><br>
+                    <select th:field="*{period}" class="form-control mt-2" id="loc2" name="Ture în natură companii" style="border-radius: 5px; display: inline-block; width: auto;">
+                        <option value="">Selectați perioada</option>
+                        <option value="ianuarie - decembrie">15 aprilie - 22 aprilie </option>
+                        <option value="aprilie - octombrie">15 iunie - 22 septembrie </option>
+                        <option value="iunie - septembrie">01 decembrie - 20 decembrie</option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" th:field="*{activity}" value="Ture în natură companii" id="loc1">
+                    <label class="form-check-label" for="natureTour">Escaladă</label><br>
+                    <select th:field="*{period}" class="form-control mt-2" id="turenat" name="Ture în natură companii" style="border-radius: 5px; display: inline-block; width: auto;">
+                        <option value="">Selectați perioada</option>
+                        <option value="ianuarie - decembrie">15 aprilie - 22 aprilie </option>
+                        <option value="aprilie - octombrie">15 iunie - 22 septembrie </option>
+                        <option value="iunie - septembrie">01 decembrie - 20 decembrie</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="mesaj">Mesaj:</label>
+            <textarea th:field="*{message}" class="form-control" id="mesaj" rows="4" placeholder="Alte întrebări și cereri"
+                      style="border-radius: 5px;"></textarea>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-info" style="display: block; margin: auto;"><b>Trimite</b>
+        </button>
+    </form>
+</div>
+<br>
+
+<!-- Nota subsol -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    </section>
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <div class="row mt-3">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class=""></i>Luana Nature
+                    </h6>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <p><i class="fas fa-home me-3"></i> Comuna Fundata, Brasov, RO</p>
+                    <p>
+                        <i class="fas fa-envelope me-3"></i>
+                        luananature2024@gmail.com
+                    </p>
+                    <p><i class="fas fa-phone me-3"></i> + 40 268 477 698</p>
+                    <p><i class="fas fa-mobile-alt me-3"></i> + 40 724 789 718</p>
+                    <h6 class="text-uppercase fw-bold mb-4">Rețele sociale</h6>
+                    <a href="https://www.facebook.com/profile.php?id=61569606121431" class="me-4" style="color: darkslategrey">
+                        <p><i class="fab fa-facebook-f"></i> Facebook </p>
+                    </a>
+                    <a href="https://www.instagram.com/luana20241209/" class="me-4 text-reset">
+                        <p><i class="fab fa-instagram"></i> Instagram </p>
+                    </a>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="text-center p-4 me-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2025 Luana Nature
+    </div>
+</footer>
+
+</body>
+</html>

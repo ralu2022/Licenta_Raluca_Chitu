@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Luana Nature</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/.css/css.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body style="font-family: 'Arial', sans-serif;">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Meniu sus -->
+
+
+<nav class="navbar navbar-expand-sm bg-white fixed-top">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNavleft">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/mainpage}"><b>Acasă</b></a>
+                </li> <!-- Acasă -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/companies}"><b>Companii</b></a>
+                </li> <!-- Companii -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/individuals}"><b>Individual</b></a>
+                </li> <!-- Individual -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/kids}"><b>Lumea copiilor</b></a>
+                </li> <!-- Lumea copiilor -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/storeproducts}"><b>Magazin</b></a>
+                </li> <!-- Magazin -->
+                <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true" th:href="@{/reviews/review}"><b>Recenzie nouă</b></a>
+                </li> <!-- Recenzie -->
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}"><b>Logare</b></a>
+                </li> <!-- Logare -->
+                <li class="nav-item">
+                    <a class="nav-link disabled"  aria-disabled="true" th:href="@{/reservations/reservation}"><b>Rezervare nouă</b></a>
+                </li> <!-- Rezervare-->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/aboutus}"><b>Despre noi</b></a>
+                </li> <!-- Despre noi -->
+                <li class="nav-item">
+                    <a class="nav-link"
+                       th:href="@{/contactMessages/contactMessage}"><b>Contact</b></a>
+                </li> <!-- Contact -->
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+
+<!-- Imagini resturant - carusel -->
+<div class="scroll-container w3-medium overflow-visible position-relative z-index-1">
+    <img src="/pictures/restaurant_0.jpg" alt="restaurant_0" width="600" height="400">
+    <img src="/pictures/restaurant_1.jpg" alt="restaurant_1" width="600" height="400">
+    <img src="/pictures/restaurant_2.jpg" alt="restaurant_2" width="600" height="400">
+    <img src="/pictures/restaurant_3.jpg" alt="restaurant_3" width="600" height="400">
+    <img src="/pictures/restaurant_4.jpg" alt="restaurant_4" width="600" height="400">
+</div>
+<br><br>
+
+<!-- Meniu catering -->
+<div class="container-fluid text-center">
+    <h1 style="text-align: center; font-family: Gabriola; font-size:5rem; color: darkcyan" >MENIUL NOSTRU</h1>
+
+    <!-- Secțiunea Non-Vegan -->
+    <div style="margin-top: 30px; text-align: left;">
+        <h3 style="margin-left: 10%;">🍖 Meniu Non-Vegan - bucate pentru iubitorii de carne </h3>
+        <div style="max-height: 400px; overflow-y: auto; margin: auto; width: 80%; border: 1px solid #ccc;">
+            <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                <thead style="position: sticky; top: 0; background-color: #f8f9fa; z-index: 1;">
+                <tr>
+                    <th style="padding: 10px; border-bottom: 2px solid #ccc;">Denumire</th>
+                    <th style="padding: 10px; border-bottom: 2px solid #ccc;">Preț (RON)</th>
+                    <th style="padding: 10px; border-bottom: 2px solid #ccc;">Imagine</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <!-- Aperitive -->
+                <tr>
+                    <td colspan="3"
+                        style="padding: 10px; background-color: #f1f1f1; font-size: 18px; text-align: left;">
+                        🍽️ Aperitive și mic dejun
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;"> MIC DEJUN (ou ochi/omletă, cafea/ceai/suc, mezeluri, brânză, fructe)
+                    </td>
+                    <td style="padding: 10px;">126</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_15.jpg" target="_blank">
+                            <img src="/pictures/catering_15.jpg" alt="ANTIPASTO DI MARE"
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">ANTIPASTO DI MARE 250g
+                        (CREVETI, CARACATITA, CALAMARI BABY, MIX DE SALATA, PAINE,
+                        LAMAIE, USTUROI, VIN ALB) *2,4,9,14
+                    </td>
+                    <td style="padding: 10px;">126</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_0.jpg" target="_blank">
+                            <img src="/pictures/catering_0.jpg" alt="ANTIPASTO DI MARE"
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">ANTIPASTO DI TERRA 250g
+                        (BRESAOLA, SALAMURI, PROSCIUTTO, BUFALA, BRANZETURI, ANGHINARE,
+                        ROSII USCATE) *2
+                    </td>
+                    <td style="padding: 10px;">82</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_1.jpg" target="_blank">
+                            <img src="/pictures/catering_1.jpg" alt="ANTIPASTO DI TERRA" style="width: 100px;
+                             height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">VITELLO TONNATO 220g
+                        (CARNE DE VIȚEL, SOS DE TON, PARMEZAN, CAPERE, RUCOLA,
+                        CRUTOANE) *1,3,9,12
+                    </td>
+                    <td style="padding: 10px;">65</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_2.jpg" target="_blank">
+                            <img src="/pictures/catering_2.jpg" alt="VITELLO TONNATO"
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">FOIE GRAS DI CANARD 170g
+                        (PATE DE FICAT DE RATA, CHUTNEY DE MANGO) *9
+                    </td>
+                    <td style="padding: 10px;">95</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_3.jpg" target="_blank">
+                            <img src="/pictures/catering_3.jpg" alt="FOIE GRAS DI CANARD"
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">CARPACCIO DI MANZO CON TARTUFO 200g
+                        (MUSCHI DE VITA, CREMA TRUFE, BRANZA DE CAPRA, MIX DE
+                        SALATA, PARMEZAN) *2,3
+                    </td>
+                    <td style="padding: 10px;">72</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_4.jpg" target="_blank">
+                            <img src="/pictures/catering_4.jpg" alt="CARPACCIO DI MANZO "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+
+                <!-- Supe -->
+                <tr>
+                    <td colspan="3"
+                        style="padding: 10px; background-color: #f1f1f1; font-size: 18px; text-align: left;">
+                        🍲 Supe
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">*FUNGHI AL GORGONZOLA E TARTUFO 400g
+                        (CREMA DE CIUPERCI, CROSTINI CU GORGONZOLA, CREMA DE TRUFE)
+                        *2,3,9 *
+                    </td>
+                    <td style="padding: 10px;">40</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_5.jpg" target="_blank">
+                            <img src="/pictures/catering_5.jpg" alt="FUNGHI AL GORGONZOLA "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">ZUPPA DI PESCE 450g
+                        (FRUCTE DE MARE, SOS DE ROSII) *3,4,5,9,14
+                    </td>
+                    <td style="padding: 10px;">72</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_6.jpg" target="_blank">
+                            <img src="/pictures/catering_6.jpg" alt="ZUPPA DI PESCE "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+
+                <!-- Fel principal -->
+                <tr>
+                    <td colspan="3"
+                        style="padding: 10px; background-color: #f1f1f1; font-size: 18px; text-align: left;">
+                        🍛 Fel Principal
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">*FILETTO PRATO 180/40g
+                        (MUSCHI DE VITA BLACK ANGUS LA GRATAR, HRIBI, CREMA DE TRUFE)
+                        *2,3
+                    </td>
+                    <td style="padding: 10px;">146</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_7.jpg" target="_blank">
+                            <img src="/pictures/catering_7.jpg" alt="FILETTO PRATO "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">BRACIOLE DI MAIALE IBERICO 250/140g
+                        (COTLET DE PORC IBERIC SOUS VIDE, ARDEI COPT, BABY CARTOFI, SOS
+                        DEMIGLACE)* 2,9,10
+                    </td>
+                    <td style="padding: 10px;">153</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_8.jpg" target="_blank">
+                            <img src="/pictures/catering_8.jpg" alt="BRACIOLE DI MAIALE  "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">FEGATO D’ANATRA CON MELE CARAMELLATE
+                        130/70/20g
+                        (FICAT DE RATA, MERE CARAMELIZATE, DULCEATA AFINE) *2
+                    </td>
+                    <td style="padding: 10px;">165</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_9.jpg" target="_blank">
+                            <img src="/pictures/catering_9.jpg" alt="FEGATO D’ANATRA"
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+
+                <!-- Desert -->
+                <tr>
+                    <td colspan="3"
+                        style="padding: 10px; background-color: #f1f1f1; font-size: 18px; text-align: left;">
+                        🍰 Desert
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">BARETTA DI CIOCCOLATO ALLA CREMA DI TONKA
+                        180g
+                        (BATON DE CIOCOLATA, CREMA DE VANILIE CU TONKA) *1,2,8,9
+                    </td>
+                    <td style="padding: 10px;">53</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_10.jpg" target="_blank">
+                            <img src="/pictures/catering_10.jpg" alt="CARPACCIO DI MANZO "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">SFERA DI CIOCCOLATO E ZABAIONE DI BAILEYS
+                        180g
+                        (GLOB DE CIOCOLATA, CREMA DE CIOCOLATA ALBA,INGHETATA,VIS-
+                        INE,ZABAIONE DE BAILEYS) *1,2,9
+                    </td>
+                    <td style="padding: 10px;">49</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_11.jpg" target="_blank">
+                            <img src="/pictures/catering_11.jpg" alt="CARPACCIO DI MANZO "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+
+                <!-- Băuturi -->
+                <tr>
+                    <td colspan="3"
+                        style="padding: 10px; background-color: #f1f1f1; font-size: 18px; text-align: left;">
+                        🍹 Băuturi
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">CAPPUCCINO/CAPPUCCINO VIENE</td>
+                    <td style="padding: 10px;">19</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_12.jpg" target="_blank">
+                            <img src="/pictures/catering_12.jpg" alt="CARPACCIO DI MANZO "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">LATTE MACCHIATO/HOT CHOCOLATE</td>
+                    <td style="padding: 10px;">21</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_13.jpg" target="_blank">
+                            <img src="/pictures/catering_13.jpg" alt="CARPACCIO DI MANZO "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">CEAI DIVERSE SORTIMENTE.</td>
+                    <td style="padding: 10px;">17</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_14.jpg" target="_blank">
+                            <img src="/pictures/catering_14.jpg" alt="TEA " style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Secțiunea Vegan -->
+    <div style="margin-top: 30px; text-align: left;">
+        <h3 style="margin-left: 10%;">🍖 Meniu Vegan - fără ouă, lapte sau carne </h3>
+        <div style="max-height: 400px; overflow-y: auto; margin: auto; width: 80%; border: 1px solid #ccc;">
+            <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                <thead style="position: sticky; top: 0; background-color: #f8f9fa; z-index: 1;">
+                <tr>
+                    <th style="padding: 10px; border-bottom: 2px solid #ccc;">Denumire</th>
+                    <th style="padding: 10px; border-bottom: 2px solid #ccc;">Preț (RON)</th>
+                    <th style="padding: 10px; border-bottom: 2px solid #ccc;">Imagine</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Aperitive -->
+                <tr>
+                    <td colspan="3" style="
+                    padding: 10px; background-color: #f1f1f1; font-size: 18px; text-align: left;">
+                        🍽️ Aperitive și mic dejun
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;"> MIC DEJUN (ou ochi/omletă, cafea/ceai/suc, mezeluri, brânză, fructe)
+                    </td>
+                    <td style="padding: 10px;">126</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_15.jpg" target="_blank">
+                            <img src="/pictures/catering_15.jpg" alt="ANTIPASTO DI MARE"
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">ANTIPASTO DI MARE 250g
+                        (CREVETI, CARACATITA, CALAMARI BABY, MIX DE SALATA, PAINE,
+                        LAMAIE, USTUROI, VIN ALB) *2,4,9,14
+                    </td>
+                    <td style="padding: 10px;">126</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_0.jpg" target="_blank">
+                            <img src="/pictures/catering_0.jpg" alt="ANTIPASTO DI MARE"
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">ANTIPASTO DI TERRA 250g
+                        (BRESAOLA, SALAMURI, PROSCIUTTO, BUFALA, BRANZETURI, ANGHINARE,
+                        ROSII USCATE) *2
+                    </td>
+                    <td style="padding: 10px;">82</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_1.jpg" target="_blank">
+                            <img src="/pictures/catering_1.jpg" alt="ANTIPASTO DI TERRA" style="width: 100px;
+                             height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">VITELLO TONNATO 220g
+                        (CARNE DE VIȚEL, SOS DE TON, PARMEZAN, CAPERE, RUCOLA,
+                        CRUTOANE) *1,3,9,12
+                    </td>
+                    <td style="padding: 10px;">65</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_2.jpg" target="_blank">
+                            <img src="/pictures/catering_2.jpg" alt="VITELLO TONNATO"
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">FOIE GRAS DI CANARD 170g
+                        (PATE DE FICAT DE RATA, CHUTNEY DE MANGO) *9
+                    </td>
+                    <td style="padding: 10px;">95</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_3.jpg" target="_blank">
+                            <img src="/pictures/catering_3.jpg" alt="FOIE GRAS DI CANARD"
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">CARPACCIO DI MANZO CON TARTUFO 200g
+                        (MUSCHI DE VITA, CREMA TRUFE, BRANZA DE CAPRA, MIX DE
+                        SALATA, PARMEZAN) *2,3
+                    </td>
+                    <td style="padding: 10px;">72</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_4.jpg" target="_blank">
+                            <img src="/pictures/catering_4.jpg" alt="CARPACCIO DI MANZO "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <!-- Supe -->
+                <tr>
+                    <td colspan="3"
+                        style="padding: 10px; background-color: #f1f1f1; font-size: 18px; text-align: left;">
+                        🍲 Supe
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">*FUNGHI AL GORGONZOLA E TARTUFO 400g
+                        (CREMA DE CIUPERCI, CROSTINI CU GORGONZOLA, CREMA DE TRUFE)
+                        *2,3,9 *
+                    </td>
+                    <td style="padding: 10px;">40</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_5.jpg" target="_blank">
+                            <img src="/pictures/catering_5.jpg" alt="FUNGHI AL GORGONZOLA "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">ZUPPA DI PESCE 450g
+                        (FRUCTE DE MARE, SOS DE ROSII) *3,4,5,9,14
+                    </td>
+                    <td style="padding: 10px;">72</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_6.jpg" target="_blank">
+                            <img src="/pictures/catering_6.jpg" alt="ZUPPA DI PESCE "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <!-- Fel principal -->
+                <tr>
+                    <td colspan="3"
+                        style="padding: 10px; background-color: #f1f1f1; font-size: 18px; text-align: left;">
+                        🍛 Fel Principal
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">*FILETTO PRATO 180/40g
+                        (MUSCHI DE VITA BLACK ANGUS LA GRATAR, HRIBI, CREMA DE TRUFE)
+                        *2,3
+                    </td>
+                    <td style="padding: 10px;">146</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_7.jpg" target="_blank">
+                            <img src="/pictures/catering_7.jpg" alt="FILETTO PRATO "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">BRACIOLE DI MAIALE IBERICO 250/140g
+                        (COTLET DE PORC IBERIC SOUS VIDE, ARDEI COPT, BABY CARTOFI, SOS
+                        DEMIGLACE)* 2,9,10
+                    </td>
+                    <td style="padding: 10px;">153</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_8.jpg" target="_blank">
+                            <img src="/pictures/catering_8.jpg" alt="BRACIOLE DI MAIALE  "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">FEGATO D’ANATRA CON MELE CARAMELLATE
+                        130/70/20g
+                        (FICAT DE RATA, MERE CARAMELIZATE, DULCEATA AFINE) *2
+                    </td>
+                    <td style="padding: 10px;">165</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_9.jpg" target="_blank">
+                            <img src="/pictures/catering_9.jpg" alt="FEGATO D’ANATRA"
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <!-- Desert -->
+                <tr>
+                    <td colspan="3"
+                        style="padding: 10px; background-color: #f1f1f1; font-size: 18px; text-align: left;">
+                        🍰 Desert
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">BARETTA DI CIOCCOLATO ALLA CREMA DI TONKA
+                        180g
+                        (BATON DE CIOCOLATA, CREMA DE VANILIE CU TONKA) *1,2,8,9
+                    </td>
+                    <td style="padding: 10px;">53</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_10.jpg" target="_blank">
+                            <img src="/pictures/catering_10.jpg" alt="CARPACCIO DI MANZO "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">SFERA DI CIOCCOLATO E ZABAIONE DI BAILEYS
+                        180g
+                        (GLOB DE CIOCOLATA, CREMA DE CIOCOLATA ALBA,INGHETATA,VIS-
+                        INE,ZABAIONE DE BAILEYS) *1,2,9
+                    </td>
+                    <td style="padding: 10px;">49</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_11.jpg" target="_blank">
+                            <img src="/pictures/catering_11.jpg" alt="CARPACCIO DI MANZO "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <!-- Băuturi -->
+                <tr>
+                    <td colspan="3"
+                        style="padding: 10px; background-color: #f1f1f1; font-size: 18px; text-align: left;">
+                        🍹 Băuturi
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">CAPPUCCINO/CAPPUCCINO VIENE</td>
+                    <td style="padding: 10px;">19</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_12.jpg" target="_blank">
+                            <img src="/pictures/catering_12.jpg" alt="CARPACCIO DI MANZO "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">LATTE MACCHIATO/HOT CHOCOLATE</td>
+                    <td style="padding: 10px;">21</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_13.jpg" target="_blank">
+                            <img src="/pictures/catering_13.jpg" alt="CARPACCIO DI MANZO "
+                                 style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px;">CEAI DIVERSE SORTIMENTE.</td>
+                    <td style="padding: 10px;">17</td>
+                    <td style="padding: 10px;">
+                        <a href="/pictures/catering_14.jpg" target="_blank">
+                            <img src="/pictures/catering_14.jpg" alt="TEA " style="width: 100px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Notă de subsol -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    </section>
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <div class="row mt-3">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class=""></i>Luana Nature
+                    </h6>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Link-uri utile
+                    </h6>
+                    <p>
+                        <a th:href="@{/companies}" class="text-reset">Companii</a>
+                    </p>
+                    <p>
+                        <a th:href="@{/individuals}" class="text-reset">Individual</a>
+                    </p>
+                    <p>
+                        <a th:href="@{/kids}" class="text-reset">Lumea copiilor</a>
+                    </p>
+                </div>
+
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <p><i class="fas fa-home me-3"></i> Comuna Fundata, Brasov, RO</p>
+                    <p>
+                        <i class="fas fa-envelope me-3"></i>
+                        luananature2024@gmail.com
+                    </p>
+                    <p><i class="fas fa-phone me-3"></i> + 40 268 477 698</p>
+                    <p><i class="fas fa-mobile-alt me-3"></i> + 40 724 789 718</p>
+                    <h6 class="text-uppercase fw-bold mb-4">Rețele sociale</h6>
+                    <a href="https://www.facebook.com/profile.php?id=61569606121431" class="me-4"
+                       style="color: darkslategrey">
+                        <p><i class="fab fa-facebook-f"></i> Facebook </p>
+                    </a>
+                    <a href="https://www.instagram.com/luana20241209/" class="me-4 text-reset">
+                        <p><i class="fab fa-instagram"></i> Instagram </p>
+                    </a>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="text-center p-4 me-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2025 Luana Nature
+    </div>
+</footer>
+</body>

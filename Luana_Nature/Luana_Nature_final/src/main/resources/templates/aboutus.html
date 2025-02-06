@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Luana Nature</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous">
+
+    </script>
+</head>
+<body>
+
+<!-- Meniu -->
+<nav class="navbar navbar-expand-sm bg-white fixed-top">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Meniu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavleft"> <!-- Meniu stânga -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/mainpage}"><b>Acasă</b></a>
+                </li> <!-- Acasă -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/companies}"><b>Companii</b></a>
+                </li> <!-- Companii -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/individuals}"><b>Individual</b></a>
+                </li> <!-- Individual -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/kids}"><b>Lumea copiilor</b></a>
+                </li> <!-- Lumea copiilor-->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/catering}"><b>Catering</b></a>
+                </li> <!-- Catering -->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/storeproducts}"><b>Magazin</b></a>
+                </li> <!-- Magazin -->
+                <li class="nav-item">
+                    <a class="nav-link disabled"  aria-disabled="true" th:href="@{/reviews/review}"><b>Recenzie nouă</b></a>
+                </li> <!-- Recenzie -->
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}"><b>Logare</b></a>
+                </li> <!-- Logare -->
+                <li class="nav-item">
+                    <a class="nav-link disabled"  aria-disabled="true" th:href="@{/reservations/reservation}"><b>Rezervare nouă</b></a>
+                </li> <!-- Rezervare-->
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/aboutus}"><b>Despre noi</b></a>
+                </li> <!-- Despre noi -->
+                <li class="nav-item">
+                    <a class="nav-link"
+                       th:href="@{/contactMessages/contactMessage}"><b>Contact</b></a>
+                </li> <!-- Contact -->
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+
+<!-- Imagine sus -->
+<div class="card" style="width: 100%; position: relative;">
+    <img class="card-img-top" src="/pictures/logo.png" alt="Centered image" style="height: 400px;
+    width: 100%;object-fit: cover;">
+</div>
+<br>
+
+<!-- Secțiune mijloc -->
+<div class="container">
+    <div class="row" style="justify-content: center">
+        <div class="col-sm-4">
+            <h1 style="font-family: 'JetBrains Mono ExtraBold',serif;color:coral">Misiunea noastră </h1>
+        </div>
+        <br><br>
+        <div class="col-sm-5">
+            <h3><b>Lucrează și relaxează-te</b></h3><br>
+            <p>Misiunea noastră este aceea de a creea un spațiu în care utilul să fie îmbinat cu plăcutul. Dorim să
+                cliențiilor noștri
+                oferim o experiență de neuitat, un altfel de a lucra și a petrece timpul liber. </p>
+        </div>
+    </div><br><br><br>
+    <div class="row" style="justify-content: center">
+        <div class="col-sm-4">
+            <h1 style="font-family: 'JetBrains Mono ExtraBold';color:coral">Valorile noastre </h1>
+        </div>
+        <br><br>
+        <div class="col-sm-5">
+            <h3><b> Cea mai bună experiență la locul de muncă </b></h3><br>
+            <p>Ne dorim să oferim clienților noștrii un loc unde să se simtă relaxați prin muncă. Natura înseamnă
+                sănatate,energie și aer curat.</p>
+            <h3><b> Promovăm conceptul Work from Anywhere </b></h3><br>
+            <p>Susținem un mediu de lucru modern, flexibil și sănătos.</p>
+        </div>
+    </div>
+</div>
+<br>
+
+<!-- Notă subsol -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted">
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    </section>
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <div class="row mt-3">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class=""></i>Luana Nature
+                    </h6>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Link-uri utile
+                    </h6>
+                    <p>
+                        <a th:href="@{/mainpage}" class="text-reset">Acasă</a>
+                    </p>
+                    <p>
+                        <a th:href="@{/companies}" class="text-reset">Companii</a>
+                    </p>
+                    <p>
+                        <a th:href="@{/individuals}" class="text-reset">Individual</a>
+                    </p>
+                    <p>
+                        <a th:href="@{/kids}" class="text-reset">Lumea copiilor</a>
+                    </p>
+                </div>
+
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <p><i class="fas fa-home me-3"></i> Comuna Fundata, Brasov, RO</p>
+                    <p>
+                        <i class="fas fa-envelope me-3"></i>
+                        luananature2024@gmail.com
+                    </p>
+                    <p><i class="fas fa-phone me-3"></i> + 40 268 477 698</p>
+                    <p><i class="fas fa-mobile-alt me-3"></i> + 40 724 789 718</p>
+                    <h6 class="text-uppercase fw-bold mb-4">Rețele sociale</h6>
+                    <a href="https://www.facebook.com/profile.php?id=61569606121431" class="me-4" style="color: darkslategrey">
+                        <p><i class="fab fa-facebook-f"></i> Facebook </p>
+                    </a>
+                    <a href="https://www.instagram.com/luana20241209/" class="me-4 text-reset">
+                        <p><i class="fab fa-instagram"></i> Instagram </p>
+                    </a>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="text-center p-4 me-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2025 Luana Nature
+    </div>
+</footer>
+</body>
+</html>
