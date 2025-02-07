@@ -39,8 +39,9 @@ public class ReservationService {
     @SuppressWarnings("all")
     public Reservation addReservation(String name, String email, String phone, String company, LocalDate arrivalDate,
                                LocalDate departureDate, int numberOfPersons, String accommodationType, String cateringType,
-                               String cateringMentions, String drinkType, String activity, String period, String message, User user) {
+                               String cateringMentions, String drinkType, String activity, String period, String message, Long userId) {
 
+        User user = userRepository.findById(userId).get();
         Reservation reservation = new Reservation();
 
         reservation.setName(name);
