@@ -8,7 +8,9 @@ package com.example.Luana_Nature.service;
 
 
 import com.example.Luana_Nature.model.Review;
+import com.example.Luana_Nature.model.User;
 import com.example.Luana_Nature.repository.ReviewRepository;
+import com.example.Luana_Nature.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,16 +21,21 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ReviewService {
     private final ReviewRepository reviewRepository;
+    private final UserRepository userRepository;
 
     public List<Review> findAll() {
         return reviewRepository.findAll();
     }
 
-    public void addReview(int rating, String comment) {
+    public void addReview(int rating, String comment, Long userId) {
+
+        User user = userRepository.findById(userId).get();
 
         Review review = new Review();
+
         review.setRating(rating);
         review.setComment(comment);
+        review.setReviewUser(user);
 
         reviewRepository.save(review);
     }
