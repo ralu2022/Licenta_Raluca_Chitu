@@ -8,9 +8,13 @@
 package com.example.Luana_Nature.controller;
 
 import com.example.Luana_Nature.model.Review;
+import com.example.Luana_Nature.model.User;
 import com.example.Luana_Nature.service.EmailService;
 import com.example.Luana_Nature.service.ReviewService;
+import com.example.Luana_Nature.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +29,7 @@ import java.util.Map;
 public class ReviewController {
 
     private final ReviewService reviewService;
-    private final EmailService emailService;
+    private final UserService userService;
 
     /* Viualizare review-uri */
 
@@ -45,8 +49,14 @@ public class ReviewController {
     @PostMapping("/addReview")
     public String addReview(@RequestParam int rating,
                             @RequestParam String comment) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.findByUsername(username);
 
-        reviewService.addReview(rating, comment);
+        if (user == null) {
+            throw new UsernameNotFoundException("Utilizatorul nu a fost găsit!");
+        }
+
+        reviewService.addReview(rating, comment, user.getUserId());
 
         return "redirect:/reviews/review";
     }
