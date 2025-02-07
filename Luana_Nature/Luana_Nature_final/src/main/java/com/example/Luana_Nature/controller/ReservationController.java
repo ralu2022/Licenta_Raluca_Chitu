@@ -1,97 +1,177 @@
-/**
- * Service class for managing reservations. This class interacts with the ReservationRepository to perform
- * CRUD (Create, Read, Update, Delete) operations for reservations.
- * <p>
- * The ReservationService class provides methods to add, update, delete, and retrieve reservations. It also
- * offers a method to get the count of reservations grouped by type.
- * </p>
- */
+/*
+ * Controller used to handle CRUD (create, read, update, delete) operations upon Reservation entity.
+ *
+ * For the read operations there two @GetMapping end points declared as the admin has also the possibility to modify or
+ * delete a reservation.
+ *
+ * */
 
-package com.example.Luana_Nature.service;
 
+package com.example.Luana_Nature.controller;
 
 import com.example.Luana_Nature.model.Reservation;
 import com.example.Luana_Nature.model.User;
 import com.example.Luana_Nature.repository.ReservationRepository;
-import com.example.Luana_Nature.repository.UserRepository;
+import com.example.Luana_Nature.service.EmailService;
+import com.example.Luana_Nature.service.ReservationService;
+import com.example.Luana_Nature.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
 
-@Service
+@Controller
+@RequestMapping("/reservations")
 @RequiredArgsConstructor
-public class ReservationService {
 
-    private final ReservationRepository reservationRepository;
-    private final UserRepository userRepository;
+public class ReservationController {
 
-    /* READ */
-    public List<Reservation> getAllReservations() {
-        return reservationRepository.findAll();
+    private final ReservationService reservationService;
+    private final EmailService emailService;
+    private final UserService userService;
+
+
+    /* Vizualizare rezervări - admin */
+
+    @GetMapping("/reservationsadmin")
+    public String allReservationsAdmin(Model model) {
+        model.addAttribute("reservationsadmin", reservationService.getAllReservations());
+        return "reservationsadmin";
     }
 
+    /* Adăugare rezervare */
 
-    /* CREATE */
+    @GetMapping("/reservation")
+    public String reservationForm(Model model) {
+        model.addAttribute("reservation", new Reservation());
+        return "reservationformuser";
+    }
+
+    @PostMapping("/addReservation")
+    public String addReservation(@RequestParam String name,
+                                 @RequestParam String email,
+                                 @RequestParam String phone,
+                                 @RequestParam String company,
+                                 @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate arrivalDate,
+                                 @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate departureDate,
+                                 @RequestParam int numberOfPersons,
+                                 @RequestParam String accommodationType,
+                                 @RequestParam String cateringType,
+                                 @RequestParam String cateringMentions,
+                                 @RequestParam(defaultValue = " ") String drinkType,
+                                 @RequestParam(defaultValue = " ") String activity,
+                                 @RequestParam(defaultValue = " ") String period,
+                                 @RequestParam String message) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.findByUsername(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException("Utilizatorul nu a fost găsit!");
+        }
+
+        Reservation reservation = reservationService.addReservation(name, email, phone, company, arrivalDate, departureDate, numberOfPersons,
+                accommodationType, cateringType, cateringMentions, drinkType, activity, period, message, user.getUserId());
+
+        String subject = "Rezervare nouă";
+        String text = "Rezervarea dvs. cu numărul " + reservation.getReservationId() +  " a fost creată!";
+        emailService.sendEmail(email, subject,text,name);
+
+        return "redirect:/mainpageuser";
+    }
+
+    /* Modificare rezervare */
+
+    @GetMapping("/updateReservation/{reservationId}")
+    public String reservationFormUpdated(@PathVariable Long reservationId, Model model) {
+        Reservation reservation = reservationService.getReservationById(reservationId);
+        if (reservation != null) {
+            model.addAttribute("reservationadmin", reservation);
+            return "reservationformupdate";
+        } else {
+            return "redirect:/reservations/reservationsadmin";
+        }
+
+    }
+
+    @PutMapping("/updateReservation/{reservationId}")
     @SuppressWarnings("all")
-    public Reservation addReservation(String name, String email, String phone, String company, LocalDate arrivalDate,
-                               LocalDate departureDate, int numberOfPersons, String accommodationType, String cateringType,
-                               String cateringMentions, String drinkType, String activity, String period, String message, Long userId) {
+    public String updateReservation(@PathVariable Long reservationId,
+                                    @RequestParam String name,
+                                    @RequestParam String email,
+                                    @RequestParam String phone,
+                                    @RequestParam String company,
+                                    @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate arrivalDate,
+                                    @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate departureDate,
+                                    @RequestParam int numberOfPersons,
+                                    @RequestParam String accommodationType,
+                                    @RequestParam String cateringType,
+                                    @RequestParam String cateringMentions,
+                                    @RequestParam String drinkType,
+                                    @RequestParam String activity,
+                                    @RequestParam String period,
+                                    @RequestParam String message) {
+        Reservation currentReservation = reservationService.getReservationById(reservationId);
 
-        User user = userRepository.findById(userId).get();
-        Reservation reservation = new Reservation();
+        if (currentReservation != null) {
+            currentReservation.setName(name);
+            currentReservation.setEmail(email);
+            currentReservation.setPhone(phone);
+            currentReservation.setCompany(company);
+            currentReservation.setArrivalDate(arrivalDate);
+            currentReservation.setDepartureDate(departureDate);
+            currentReservation.setNumberOfPersons(numberOfPersons);
+            currentReservation.setAccommodationType(accommodationType);
+            currentReservation.setCateringType(cateringType);
+            currentReservation.setCateringMentions(cateringMentions);
+            currentReservation.setDrinkType(drinkType);
+            currentReservation.setActivity(activity);
+            currentReservation.setPeriod(period);
+            currentReservation.setMessage(message);
 
-        reservation.setName(name);
-        reservation.setEmail(email);
-        reservation.setPhone(phone);
-        reservation.setCompany(company);
-        reservation.setArrivalDate(arrivalDate);
-        reservation.setDepartureDate(departureDate);
-        reservation.setNumberOfPersons(numberOfPersons);
-        reservation.setAccommodationType(accommodationType);
-        reservation.setCateringType(cateringType);
-        reservation.setCateringMentions(cateringMentions);
-        reservation.setDrinkType(drinkType);
-        reservation.setActivity(activity);
-        reservation.setPeriod(period);
-        reservation.setMessage(message);
-        reservation.setReservationUser(user);
+            reservationService.updateReservation(currentReservation);
 
-        return reservationRepository.save(reservation);
+            String subject = "Rezervare actualizată";
+            String text = "Rezervarea dvs. a fost actualizată!";
+            emailService.sendEmail(email,subject,text, name);
+        }
+        return "redirect:/reservations/reservationsadmin";
     }
 
-    /* UPDATE */
-    public void updateReservation(Reservation reservation) {
-        reservationRepository.save(reservation);
+
+    /* Ștergere rezervare */
+
+    @DeleteMapping("/deleteReservation")
+    public String deleteReservation(@RequestParam Long reservationId) {
+        Reservation reservation = reservationService.getReservationById(reservationId);
+        if (reservation != null) {
+            reservationService.deleteReservation(reservationId);
+        }
+        return "redirect:/reservations/reservationsadmin";
     }
 
-    /* DELETE */
-    public void deleteReservation(Long reservationId) {
-        Reservation reservation = reservationRepository.findById(reservationId).orElseThrow(() -> new IllegalArgumentException(
-                "Rezervarea nu există!"));
-        reservationRepository.delete(reservation);
+    /* Metodă de numărare a rezervărilor în funcție de tipul cazării */
+
+    @GetMapping("/api/count-by-type")
+    @ResponseBody
+    public List<Map<String, Object>> getCountByType() {
+        return reservationService.getReservationCountByType();
     }
 
-
-    public List<Map<String, Object>> getReservationCountByType() {
-        return reservationRepository.countReservationsByType();
+    @GetMapping("/chart")
+    public String showReservationChart(Model model) {
+        List<Map<String, Object>> reservationData = reservationService.getReservationCountByType();
+        model.addAttribute("reservationData", reservationData);
+        return "redirect:/mainpage";
     }
-
-
-    public Reservation getReservationById(Long reservationId) {
-        return reservationRepository.findById(reservationId).orElse(null);
-    }
-
 
 
 }
-
-
-
-
-
-
-
